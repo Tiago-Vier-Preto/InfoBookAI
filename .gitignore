@@ -3,5 +3,5 @@ __pycache__/
 web/__pycache__/
 *.py[cod]
 
-.venv
-.vscode
+.venv/
+.vscode/
