@@ -1,25 +1,31 @@
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-const captureButton = document.getElementById('capture-button');
+const videoElement = document.getElementById('videoElement');
+const canvasElement = document.getElementById('canvasElement');
+const photoElement = document.getElementById('photoElement');
+const startButton = document.getElementById('startButton');
+const captureButton = document.getElementById('captureButton');
 
-// Solicita acesso à câmera
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then((stream) => {
-        video.srcObject = stream;
-        video.play();
-    })
-    .catch((err) => {
-        console.error('Erro ao acessar a câmera: ', err);
-    });
+let stream;
 
-// Captura a imagem da câmera quando o botão é clicado
-captureButton.addEventListener('click', () => {
-    const context = canvas.getContext('2d');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+async function startWebcam() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream;
+        startButton.disabled = true;
+        captureButton.disabled = false;
+    } catch (error) {
+        console.error('Error accessing webcam:', error);
+    }
+}
 
-    // Opcional: exibe a foto capturada
-    const imgDataUrl = canvas.toDataURL('image/png');
-    console.log(imgDataUrl);  // Exibe a URL da imagem capturada
-});
+startButton.addEventListener('click', startWebcam);
+
+function capturePhoto() {
+    canvasElement.width = videoElement.videoWidth;
+    canvasElement.height = videoElement.videoHeight;
+    canvasElement.getContext('2d').drawImage(videoElement, 0, 0);
+    const photoDataUrl = canvasElement.toDataURL('image/jpeg');
+    photoElement.src = photoDataUrl;
+    photoElement.style.display = 'block';
+}
+
+captureButton.addEventListener('click', capturePhoto);

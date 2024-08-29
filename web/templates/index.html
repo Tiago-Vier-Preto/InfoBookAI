@@ -15,9 +15,11 @@
 
       <section>
         <div id="camera-container">
-          <video id="video" autoplay></video>
-          <button id="capture-button">Tirar Foto</button>
-          <canvas id="canvas"></canvas>
+          <video id="videoElement" autoplay></video>
+          <button id="startButton">Start Webcam</button>
+          <button id="captureButton">Capture Photo</button>
+          <canvas id="canvasElement" style="display: none;"></canvas>
+          <img id="photoElement" style="display: none;">
         </div>
       </section>
     </main>
