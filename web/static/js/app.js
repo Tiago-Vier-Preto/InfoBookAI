@@ -26,6 +26,25 @@ function capturePhoto() {
     const photoDataUrl = canvasElement.toDataURL('image/jpeg');
     photoElement.src = photoDataUrl;
     photoElement.style.display = 'block';
+
+    // Envia a imagem para o servidor
+    fetch('/process-image', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ image: photoDataUrl })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultado do OCR:', data.text);
+        // Atualiza o conteúdo do elemento HTML com o texto do OCR
+        document.getElementById('ocrResult').innerText = data.text;
+    })
+    .catch(error => {
+        console.error('Erro ao enviar a imagem:', error);
+    });
 }
 
 captureButton.addEventListener('click', capturePhoto);
+
