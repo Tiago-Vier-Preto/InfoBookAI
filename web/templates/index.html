@@ -1,34 +1,22 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookInfoAI</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/app.css">
-  </head>
-  <body>
-    <main>
-      <section>
-        <h1>BookInfoAI</h1>
-        <p>Turn on your camera to analyze a book!</p>
-      </section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookInfoAI</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/app.css">
+</head>
+<body>
+  <main>
+    <section>
+      <h1>BookInfoAI</h1>
+      <p>Turn your camera on to analyze a book!</p>
+    </section>
 
-      <section>
-        <div id="camera-container">
-          <video id="videoElement" autoplay></video>
-          <button id="startButton">Start Webcam</button>
-          <button id="captureButton">Capture Photo</button>
-          <canvas id="canvasElement" style="display: none;"></canvas>
-          <img id="photoElement" style="display: none;">
-        </div>
-
-        <div id="results-container">
-          <h2>Results</h2>
-          <p id="ocrResult"></p>
-
-      </section>
-    </main>
-    <script src="../static/js/app.js"></script>
-  </body>
-  
+    <div>
+        <img id="videoElement" src="{{ url_for('video_feed') }}" alt="Feed de Vídeo">
+    </div>
+    
+  </main>
+</body>
 </html>

@@ -1,13 +1,13 @@
-#camera-container {
+body {
+    font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    height: 100vh;
+    background-color: #f0f0f0;
 }
-#video {
-    width: 100%;
-    max-width: 640px;
-}
-#canvas {
-    display: none;
+video {
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
