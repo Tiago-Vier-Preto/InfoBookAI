@@ -37,7 +37,7 @@ def generate_frames():
                     x1, y1, x2, y2 = map(int, box.xyxy[0])  
                     conf = box.conf[0]  
 
-                    label = f"Livro: {conf:.2f}"
+                    label = f"Book: {conf:.2f}"
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
                     cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
             
